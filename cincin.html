@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Cincin - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html" class="active">Cincin</a></li>
+                        <li><a href="kalung.html">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="auth.html" class="active"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Katalog Cincin -->
+    <section class="kalung-section">
+        <div class="kalung-container">
+            <h1>Koleksi Cincin</h1>
+            <div class="kalung-grid">
+                
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/736x/e6/e6/3c/e6e63cd89b46c7d495346b9fc0bdbf9f.jpg" alt="Cincin 1">
+                    <h2>Cincin berlian “flower crown”</h2>
+                    <p class="price">Rp 300.000.000</p>
+                    <a href="cincin-cn001.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/736x/8e/51/5e/8e515e94348761b23ea35671831e46e2.jpg" alt="Cincin 2">
+                    <h2>Cincin “ all for one</h2>
+                    <p class="price">Rp 30.000.000</p>
+                    <a href="cincin-cn002.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/56/b0/f2/56b0f2b033de434b4b94b35e9750f6fd.jpg" alt="Cincin 3">
+                    <h2>Cincin berlian “air mata ibu malin kundang”</h2>
+                    <p class="price">Rp 200.000.000</p>
+                    <a href="cincin-cn003.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/56/93/40/569340631d555c3875232938a5880c05.jpg" alt="Cincin 4">
+                    <h2>Cincin “love of my live”</h2>
+                    <p class="price">Rp 100.000.000</p>
+                    <a href="cincin-cn004.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/736x/9b/8b/f0/9b8bf01820b0be569d8f5131b575303c.jpg" alt="Cincin 5">
+                    <h2>Cincin berlian “butterfly” </h2>
+                    <p class="price">Rp 140.000.000</p>
+                    <a href="cincin-cn005.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/f5/43/c3/f543c39d849612a07ed1cc340c49e3dd.jpg" alt="Cincin 6">
+                    <h2>Cincin “the crown”</h2>
+                    <p class="price">Rp 50.000.000</p>
+                    <a href="cincin-cn006.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

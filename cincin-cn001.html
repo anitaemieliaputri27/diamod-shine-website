@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html" class="active">Cincin</a></li>
+                        <li><a href="kalung.html">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="auth.html" class="active"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Detail Produk -->
+    <section class="product-detail-section">
+        <div class="product-detail-container">
+
+            <!-- Foto Produk -->
+            <div class="product-image">
+                <img src="https://i.pinimg.com/736x/e6/e6/3c/e6e63cd89b46c7d495346b9fc0bdbf9f.jpg" alt="Cincin Berlian Elegan">
+            </div>
+
+            <!-- Info Produk -->
+            <div class="product-info">
+                <h1>Cincin berlian “flower crown”</h1>
+                <p class="price">Rp 300.000.000</p>
+                <ul>
+                    <li><strong>Kode Produk:</strong> CN-001</li>
+                    <li><strong>Material:</strong> Emas Putih, Berlian</li>
+                    <li><strong>Berat:</strong> 50g</li>
+                    <li><strong>Ukuran:</strong> All Size</li>
+                </ul>
+                <a href="#" class="add-to-cart-btn" 
+                    data-name="Cincin berlian “flower crown”" 
+                    data-price="Rp 300.000.000" 
+                    data-image="https://i.pinimg.com/736x/e6/e6/3c/e6e63cd89b46c7d495346b9fc0bdbf9f.jpg">
+                    Masukkan ke Keranjang
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Dropdown + Add to Cart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Script tombol Masukkan ke Keranjang
+            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    // Ambil data produk dari atribut
+                    const name = this.getAttribute('data-name');
+                    const price = this.getAttribute('data-price');
+                    const image = this.getAttribute('data-image');
+
+                    // Ambil data keranjang dari localStorage
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                    // Tambah produk baru
+                    cart.push({ name, price, image });
+
+                    // Simpan kembali ke localStorage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Pindah ke halaman keranjang
+                    window.location.href = 'keranjang.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

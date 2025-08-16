@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html">Cincin</a></li>
+                        <li><a href="kalung.html">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="auth.html" class="active"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Keranjang Section -->
+<section class="cart-section">
+    <div class="cart-container">
+        <h1>Keranjang Belanja</h1>
+        <div id="cart-items"></div>
+
+        <!-- Tombol Payment -->
+        <div class="cart-actions">
+            <a href="payment.html" class="payment-btn">Payment</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Dropdown + Hapus Item -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Dropdown Perhiasan
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+
+    // Ambil data keranjang dari localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+
+    // Tampilkan setiap produk
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-info">
+                <h2>${item.name}</h2>
+                <p>${item.price}</p>
+            </div>
+            <a href="#" class="remove-btn" data-index="${index}">🗑</a>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+
+    // Fungsi hapus item
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const index = this.getAttribute('data-index');
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            location.reload(); // refresh untuk update tampilan
+        });
+    });
+});
+</script>
+
+</body>
+</html>

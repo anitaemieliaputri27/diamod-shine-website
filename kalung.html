@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Kalung - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html">Cincin</a></li>
+                        <li><a href="kalung.html" class="active">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="auth.html" class="active"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Katalog Kalung -->
+    <section class="kalung-section">
+        <div class="kalung-container">
+            <h1>Koleksi Kalung</h1>
+            <div class="kalung-grid">
+                
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/ca/23/07/ca2307c9253438d9937f66e2ba7abce3.jpg" alt="Kalung 1">
+                    <h2>Kalung emas diamod “basic”</h2>
+                    <p class="price">Rp 2.500.000</p>
+                    <a href="kalung-kl001.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/95/27/48/9527481349e289ca27a6b4cd10696c85.jpg" alt="Kalung 2">
+                    <h2>Kalung diamod “lady diana”</h2>
+                    <p class="price">Rp 400.079.200</p>
+                    <a href="kalung-kl002.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/736x/8e/87/a4/8e87a41549eeb4243a850dca1814e381.jpg" alt="Kalung 3">
+                    <h2>Kalung diamod “falling sky”</h2>
+                    <p class="price">Rp 100.000.000</p>
+                    <a href="kalung-kl003.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/35/ec/11/35ec11a395afd38938f0da4ec9c5b621.jpg" alt="Kalung 4">
+                    <h2>Kalung diamod “flower crown”</h2>
+                    <p class="price">Rp 50.000.000</p>
+                    <a href="kalung-kl004.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/736x/3c/cb/44/3ccb444b9c421e147a831db8b1cee676.jpg" alt="Kalung 5">
+                    <h2>Kalung emas “connections”</h2>
+                    <p class="price">Rp 20.000.000</p>
+                    <a href="kalung-kl005.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+                <div class="kalung-card">
+                    <img src="https://i.pinimg.com/1200x/9b/c1/72/9bc172404f808c28b17ef1c9976d1eb3.jpg" alt="Kalung 6">
+                    <h2>Kalung emas “walking in the moon”</h2>
+                    <p class="price">Rp 60.000.000</p>
+                    <a href="kalung-kl006.html" class="detail-btn">Lihat Detail</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

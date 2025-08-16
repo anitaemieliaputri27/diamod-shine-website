@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html">Cincin</a></li>
+                        <li><a href="kalung.html">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="auth.html" class="active"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <h1>Tentang Kami</h1>
+            <p>
+                Selamat datang di Diamond Shine, rumah bagi keindahan berlian asli Indonesia.
+                Didirikan pada tahun ini oleh Anita Emielia Putri di Bandung, Jawa Barat, Diamond Shine hadir dengan misi sederhana namun berarti: menghadirkan kemewahan dan keanggunan berlian Indonesia kepada semua orang.
+            </p>
+            <p>
+                Kami percaya bahwa setiap berlian memiliki cerita — mulai dari proses pembentukannya di alam, hingga menjadi perhiasan yang memancarkan kilau abadi. Semua koleksi kami menggunakan berlian asli yang berasal dari bumi Indonesia, dipilih dengan teliti untuk memastikan kualitas, keindahan, dan kemurniannya.
+            </p>
+            <p>
+                Di Diamond Shine, Anda akan menemukan berbagai pilihan perhiasan berlian yang memukau, mulai dari cincin, kalung, gelang, hingga anting. Setiap desain kami dibuat untuk melengkapi keanggunan Anda, baik untuk momen spesial maupun untuk menemani hari-hari berharga dalam hidup Anda.
+            </p>
+            <p>
+                Kami percaya, kemewahan sejati bukan hanya tentang kilau, tapi juga tentang cerita dan cinta di balik setiap perhiasan. Bersama Diamond Shine, mari rayakan setiap momen dengan kilau berlian terbaik dari negeri sendiri.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Diamond Shine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon&display=swap" rel="stylesheet">
+    <style>
+        .payment-section {
+            background-color: #F8F0E5;
+            padding: 120px 20px 50px;
+            min-height: 100vh;
+        }
+        .payment-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cart-summary {
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .cart-item img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        .cart-info {
+            flex: 1;
+        }
+        .cart-info h2 {
+            font-size: 18px;
+            margin: 0 0 5px;
+        }
+        .total-price {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .payment-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .payment-form input, .payment-form select, .payment-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .confirm-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #102C57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .confirm-btn:hover {
+            background-color: #A67C52;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="https://i.pinimg.com/736x/ed/b3/a7/edb3a7f03d05f8add258a7ebd5f0bc03.jpg" alt="Diamond Shine Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Perhiasan</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cincin.html">Cincin</a></li>
+                        <li><a href="kalung.html">Kalung</a></li>
+                    </ul>
+                </li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li class="icons">
+                    <a href="keranjang.html"><span>🛒</span></a>
+                    <a href="login.html"><span>👤</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="payment-container">
+            <h1>Payment</h1>
+            <div class="cart-summary" id="cart-summary">
+                <!-- Produk dari keranjang akan muncul di sini -->
+            </div>
+            <div class="total-price" id="total-price"></div>
+
+            <!-- Form Data Pembeli -->
+            <div class="payment-form">
+                <h2>Data Pembeli</h2>
+                <label>Nama Lengkap</label>
+                <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+
+                <label>No. Telepon</label>
+                <input type="tel" id="phone" placeholder="Masukkan nomor telepon" required>
+
+                <label>Alamat Lengkap</label>
+                <textarea id="address" placeholder="Masukkan alamat pengiriman" required></textarea>
+
+                <label>Metode Pembayaran</label>
+                <select id="payment-method">
+                    <option value="Transfer Bank">Transfer Bank</option>
+                    <option value="E-Wallet">E-Wallet (OVO, Dana, GoPay)</option>
+                    <option value="COD">COD (Bayar di tempat)</option>
+                    <option value="Kartu Kredit/Debit">Kartu Kredit/Debit</option>
+                </select>
+
+                <button class="confirm-btn" id="confirm-payment">Konfirmasi Pembayaran</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Diamond Shine. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Ambil data keranjang
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartSummary = document.getElementById('cart-summary');
+            const totalPriceEl = document.getElementById('total-price');
+
+            let total = 0;
+            cartSummary.innerHTML = "";
+
+            cart.forEach(item => {
+                let priceNumber = parseInt(item.price.replace(/[^0-9]/g, ''));
+                total += priceNumber;
+
+                cartSummary.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-info">
+                            <h2>${item.name}</h2>
+                            <p>${item.price}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            totalPriceEl.innerHTML = "Total: Rp " + total.toLocaleString('id-ID');
+
+            // Konfirmasi Pembayaran
+            document.getElementById('confirm-payment').addEventListener('click', function () {
+                if (cart.length === 0) {
+                    alert("Keranjang Anda kosong!");
+                    return;
+                }
+                if (!document.getElementById('name').value || !document.getElementById('phone').value || !document.getElementById('address').value) {
+                    alert("Harap isi semua data pembeli!");
+                    return;
+                }
+                alert("Pembayaran berhasil! Terima kasih telah berbelanja di Diamond Shine 💎");
+                localStorage.removeItem('cart'); // Kosongkan keranjang
+                window.location.href = "index.html"; // Kembali ke halaman utama
+            });
+        });
+    </script>
+</body>
+</html>
